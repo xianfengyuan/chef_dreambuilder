@@ -1,0 +1,11 @@
+#!/bin/sh
+
+APP_HOME="<%= node['dreambuilder']['home'] %>"
+APP_PORT="<%= node['dreambuilder']['mgmt_port'] %>"
+
+export NODE_PATH=$APP_HOME
+cd $APP_HOME
+exec 2>&1
+
+PORT=$APP_PORT exec chpst -u root /usr/local/bin/node $APP_HOME/app.js
+
